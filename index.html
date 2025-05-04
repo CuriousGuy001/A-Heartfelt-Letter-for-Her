@@ -192,7 +192,6 @@
     </form>
 
   </div>
-
 <script>
   let sectionsVisited = 0;
   let userChoice = '';
@@ -230,17 +229,29 @@
     }
 
     document.getElementById('finalMessage').style.display = 'block';
-    audio.play();
 
-    // Disable buttons during playback
-    document.querySelector("#textbox button[onclick='showFinalMessage()']").disabled = true;
-    document.querySelector("#textbox button[onclick='submitMessage()']")?.disabled = true;
+    // Disable both buttons
+    const skipBtn = document.querySelector("#textbox button[onclick='showFinalMessage()']");
+    const submitBtn = document.querySelector("#textbox button[onclick='submitMessage()']");
+    if (skipBtn) skipBtn.disabled = true;
+    if (submitBtn) submitBtn.disabled = true;
 
-    // Submit message only after song ends
-    audio.onended = () => {
-      document.getElementById('finalMessageInput').value = message;
-      document.getElementById('messageForm').submit();
-    };
+    // Reset song to start and play
+    audio.currentTime = 0;
+    audio.play().then(() => {
+      console.log("Song started...");
+
+      // Wait until song ends, then submit the form
+      audio.addEventListener('ended', () => {
+        console.log("Song ended, submitting form...");
+        document.getElementById('finalMessageInput').value = message;
+        document.getElementById('messageForm').submit();
+      }, { once: true });
+
+    }).catch((error) => {
+      console.error("Error playing song:", error);
+      alert("Could not play the song. Please try again.");
+    });
   }
 
   function showFinalOption() {
@@ -269,5 +280,6 @@
     document.getElementById('messageForm').submit();
   }
 </script>
+
 </body>
 </html>
