@@ -197,40 +197,22 @@
   </div>
   
 <script>
-  let sectionsVisited = 0;
   let userChoice = '';
   let userMessage = '';
 
   function showSection(n) {
-    const allSections = document.querySelectorAll('[id^="section"]');
-    allSections.forEach(sec => sec.style.display = 'none');
-
-    const nextSection = document.getElementById('section' + n);
-    if (nextSection) {
-      nextSection.style.display = 'block';
-      nextSection.scrollIntoView({ behavior: 'smooth' });
-      sectionsVisited++;
-    }
+    document.getElementById('section' + n).style.display = 'block';
   }
 
   function chooseOption(choice) {
     userChoice = choice;
     if (userChoice === 'dontHate') {
-      showContact();
+      document.getElementById('contactInfo').style.display = 'block';
     } else if (userChoice === 'hate') {
-      showTextbox();
+      document.getElementById('textbox').style.display = 'block';
     }
   }
 
-  function showContact() {
-    document.getElementById('contactInfo').style.display = 'block';
-  }
-
-  function showTextbox() {
-    document.getElementById('textbox').style.display = 'block';
-  }
-
-  // Show final message section, validate, play song, then submit form after song ends
   function showFinalMessage() {
     const audio = document.getElementById('song');
     const message = document.getElementById('feedbackBox').value.trim();
@@ -242,34 +224,39 @@
 
     document.getElementById('finalMessage').style.display = 'block';
 
-    // Disable the buttons to avoid double clicks
+    // Disable the buttons to prevent double actions
     document.querySelector("#textbox button[onclick='showFinalMessage()']").disabled = true;
-    const submitBtn = document.querySelector("#textbox button[onclick='submitMessage()']");
-    if (submitBtn) submitBtn.disabled = true;
+    document.querySelector("#textbox button[onclick='submitMessage()']")?.disabled = true;
 
-    // Play the song
-    audio.play();
+    // Set the message value to hidden input
+    document.getElementById('finalMessageInput').value = message;
 
-    // Ensure the form submits only when the song has completely ended
-    audio.onended = () => {
-      document.getElementById('finalMessageInput').value = message;
-      document.getElementById('messageForm').submit();
-    };
+    // Play song and submit only after it ends
+    audio.currentTime = 0;
+    audio.play().then(() => {
+      audio.addEventListener('ended', () => {
+        document.getElementById('messageForm').submit();
+      }, { once: true });
+    }).catch((err) => {
+      alert("Unable to play the song. Please try again.");
+      console.error(err);
+    });
   }
 
-  function showFinalOption() {
-    document.getElementById('finalOption').style.display = 'block';
+  // Remove default submit
+  function submitMessage() {
+    alert("Please use '📨 Skip and Move On' after writing your message.");
   }
 
-  // Not used here, but kept in case your structure includes this path
   function submitForm(finalResponse) {
-    userMessage = document.getElementById('feedbackBox').value.trim();
-    if (!userMessage && !finalResponse) {
+    const message = document.getElementById('feedbackBox').value.trim();
+
+    if (!message && !finalResponse) {
       alert("Please provide both a message and a final response.");
       return;
     }
 
-    if (!userMessage) {
+    if (!message) {
       alert("Please write a message before submitting.");
       return;
     }
@@ -280,7 +267,7 @@
     }
 
     document.getElementById('submitNote').innerText = "💌 Your message has been sent successfully!";
-    document.getElementById('finalMessageInput').value = userMessage + "\n\nUser's response: " + finalResponse;
+    document.getElementById('finalMessageInput').value = message + "\n\nUser's response: " + finalResponse;
     document.getElementById('messageForm').submit();
   }
 </script>
