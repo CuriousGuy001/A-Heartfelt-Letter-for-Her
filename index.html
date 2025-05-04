@@ -164,12 +164,6 @@
       </div>
     </div>
 
-    <!-- Audio Element -->
-    <audio id="farewellAudio" preload="auto">
-      <source src="song.mp3" type="audio/mpeg" />
-      Your browser does not support the audio element.
-    </audio>
-
     <!-- Form for submitting response -->
     <form id="messageForm" action="https://formspree.io/f/myzwejnk" method="POST">
       <input type="hidden" name="message" id="finalMessageInput" />
@@ -222,16 +216,12 @@
       }
 
       if (finalResponse === 'No, I Want to Move On') {
-        const audio = document.getElementById('farewellAudio');
-        audio.play().then(() => {
-          // Wait until audio ends
-          audio.addEventListener('ended', function () {
-            document.getElementById('submitNote').innerText = "💌 Your message has been sent successfully!";
-            document.getElementById('finalMessageInput').value = userMessage + "\n\nUser's response: " + finalResponse;
-            document.getElementById('messageForm').submit();
-          });
-        }).catch((error) => {
-          alert("Autoplay blocked or audio not found. Submitting without sound.");
+        const audio = new Audio('song.mp3'); // Change this path if needed
+        audio.play();
+
+        // Wait for song to end before submitting form
+        audio.addEventListener('ended', function() {
+          document.getElementById('submitNote').innerText = "💌 Your message has been sent successfully!";
           document.getElementById('finalMessageInput').value = userMessage + "\n\nUser's response: " + finalResponse;
           document.getElementById('messageForm').submit();
         });
