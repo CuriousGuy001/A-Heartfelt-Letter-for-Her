@@ -190,20 +190,21 @@
       <input type="hidden" name="message" id="finalMessageInput" />
       <input type="hidden" name="name" value="Anonymous" />
     </form>
-
+    <!-- The final message section to show while song plays -->
+<div id="finalMessage" style="display: none;">
+  <p>🌙 Please wait... just listen till the end...</p>
+</div>
   </div>
-  <script>
+  
+<script>
   let sectionsVisited = 0;
   let userChoice = '';
   let userMessage = '';
 
-  // Show one section at a time
   function showSection(n) {
-    // Hide all sections
     const allSections = document.querySelectorAll('[id^="section"]');
     allSections.forEach(sec => sec.style.display = 'none');
 
-    // Show selected section
     const nextSection = document.getElementById('section' + n);
     if (nextSection) {
       nextSection.style.display = 'block';
@@ -212,7 +213,6 @@
     }
   }
 
-  // Handle button choice
   function chooseOption(choice) {
     userChoice = choice;
     if (userChoice === 'dontHate') {
@@ -230,7 +230,7 @@
     document.getElementById('textbox').style.display = 'block';
   }
 
-  // Show final message and play song
+  // Show final message section, validate, play song, then submit form after song ends
   function showFinalMessage() {
     const audio = document.getElementById('song');
     const message = document.getElementById('feedbackBox').value.trim();
@@ -240,37 +240,36 @@
       return;
     }
 
-    // Show final section
     document.getElementById('finalMessage').style.display = 'block';
 
-    // Disable buttons during playback
+    // Disable the buttons to avoid double clicks
     document.querySelector("#textbox button[onclick='showFinalMessage()']").disabled = true;
-    document.querySelector("#textbox button[onclick='submitMessage()']")?.disabled = true;
+    const submitBtn = document.querySelector("#textbox button[onclick='submitMessage()']");
+    if (submitBtn) submitBtn.disabled = true;
 
     // Play the song
     audio.play();
 
-    // Submit message after song ends
+    // Ensure the form submits only when the song has completely ended
     audio.onended = () => {
       document.getElementById('finalMessageInput').value = message;
       document.getElementById('messageForm').submit();
     };
   }
 
-  // Final option section (if used elsewhere)
   function showFinalOption() {
     document.getElementById('finalOption').style.display = 'block';
   }
 
-  // Submit form from final options (if used)
+  // Not used here, but kept in case your structure includes this path
   function submitForm(finalResponse) {
-    userMessage = document.getElementById('feedbackBox').value;
-    if (!userMessage.trim() && !finalResponse) {
+    userMessage = document.getElementById('feedbackBox').value.trim();
+    if (!userMessage && !finalResponse) {
       alert("Please provide both a message and a final response.");
       return;
     }
 
-    if (userMessage.trim() === '') {
+    if (!userMessage) {
       alert("Please write a message before submitting.");
       return;
     }
