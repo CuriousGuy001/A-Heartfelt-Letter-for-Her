@@ -193,82 +193,7 @@
 
   </div>
 
-  <script>
-    let sectionsVisited = 0;
-    let userChoice = '';
-    let userMessage = '';
-
-    function showSection(n) {
-      document.getElementById('section' + n).style.display = 'block';
-      sectionsVisited++;
-    }
-
-    function chooseOption(choice) {
-      userChoice = choice;
-      if (userChoice === 'dontHate') {
-        showContact();
-      } else if (userChoice === 'hate') {
-        showTextbox();
-      }
-    }
-
-    function showContact() {
-      document.getElementById('contactInfo').style.display = 'block';
-    }
-
-    function showTextbox() {
-      document.getElementById('textbox').style.display = 'block';
-    }
-
-   function showFinalMessage() {
-  const audio = document.getElementById('song');
-  const message = document.getElementById('feedbackBox').value.trim();
-
-  if (!message) {
-    alert("Please write a message before moving on.");
-    return;
-  }
-
-  document.getElementById('finalMessage').style.display = 'block';
-  audio.play();
-
-  audio.onended = () => {
-    // Submit the message only after the song ends
-    document.getElementById('finalMessageInput').value = message;
-    document.getElementById('messageForm').submit();
-  };
-}
-
- 
-}
-
-
-    function showFinalOption() {
-      document.getElementById('finalOption').style.display = 'block';
-    }
-
-    function submitForm(finalResponse) {
-      userMessage = document.getElementById('feedbackBox').value;
-      if (!userMessage.trim() && !finalResponse) {
-        alert("Please provide both a message and a final response.");
-        return;
-      }
-
-      if (userMessage.trim() === '') {
-        alert("Please write a message before submitting.");
-        return;
-      }
-
-      if (!finalResponse) {
-        alert("Please choose your final response.");
-        return;
-      }
-
-      document.getElementById('submitNote').innerText = "💌 Your message has been sent successfully!";
-      document.getElementById('finalMessageInput').value = userMessage + "\n\nUser's response: " + finalResponse;
-      document.getElementById('messageForm').submit();
-    }
-  </script><script>
+<script>
   let sectionsVisited = 0;
   let userChoice = '';
   let userMessage = '';
@@ -307,8 +232,12 @@
     document.getElementById('finalMessage').style.display = 'block';
     audio.play();
 
+    // Disable buttons during playback
+    document.querySelector("#textbox button[onclick='showFinalMessage()']").disabled = true;
+    document.querySelector("#textbox button[onclick='submitMessage()']")?.disabled = true;
+
+    // Submit message only after song ends
     audio.onended = () => {
-      // Submit the message only after the song ends
       document.getElementById('finalMessageInput').value = message;
       document.getElementById('messageForm').submit();
     };
@@ -340,6 +269,5 @@
     document.getElementById('messageForm').submit();
   }
 </script>
-
 </body>
 </html>
