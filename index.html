@@ -87,12 +87,6 @@
       font-weight: bold;
       color: green;
     }
-    .song-note {
-      display: none;
-      margin-top: 1rem;
-      font-style: italic;
-      color: #a63c71;
-    }
   </style>
 </head>
 <body>
@@ -160,7 +154,6 @@
         <button onclick="showFinalOption()">💬 Let’s Start Fresh?</button>
         <button onclick="submitForm('No, I Want to Move On')">🚶‍♂️ I Want to Move On</button>
       </div>
-      <div id="songNote" class="song-note">🎵 A final song is playing...</div>
     </div>
 
     <div id="finalOption" class="love-message">
@@ -171,6 +164,13 @@
       </div>
     </div>
 
+    <!-- Audio Element -->
+    <audio id="farewellAudio" preload="auto">
+      <source src="song.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+
+    <!-- Form for submitting response -->
     <form id="messageForm" action="https://formspree.io/f/myzwejnk" method="POST">
       <input type="hidden" name="message" id="finalMessageInput" />
       <input type="hidden" name="name" value="Anonymous" />
@@ -222,17 +222,22 @@
       }
 
       if (finalResponse === 'No, I Want to Move On') {
-        document.getElementById('songNote').style.display = 'block';
-        const audio = new Audio('song.mp3');
-        audio.play();
-
-        audio.addEventListener('ended', function () {
-          document.getElementById('submitNote').innerText = "💌 Your message has been sent successfully!";
+        const audio = document.getElementById('farewellAudio');
+        audio.play().then(() => {
+          // Wait until audio ends
+          audio.addEventListener('ended', function () {
+            document.getElementById('submitNote').innerText = "💌 Your message has been sent successfully!";
+            document.getElementById('finalMessageInput').value = userMessage + "\n\nUser's response: " + finalResponse;
+            document.getElementById('messageForm').submit();
+          });
+        }).catch((error) => {
+          alert("Autoplay blocked or audio not found. Submitting without sound.");
           document.getElementById('finalMessageInput').value = userMessage + "\n\nUser's response: " + finalResponse;
           document.getElementById('messageForm').submit();
         });
 
       } else {
+        // Submit immediately for any other response
         document.getElementById('submitNote').innerText = "💌 Your message has been sent successfully!";
         document.getElementById('finalMessageInput').value = userMessage + "\n\nUser's response: " + finalResponse;
         document.getElementById('messageForm').submit();
