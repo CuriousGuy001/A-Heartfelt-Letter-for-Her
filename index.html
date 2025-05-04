@@ -1,0 +1,253 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For Someone Very Special</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Open+Sans&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Open Sans', sans-serif;
+      background: linear-gradient(to bottom right, #f6e1f3, #fbd4ff);
+      color: #333;
+      overflow-x: hidden;
+      animation: fadeInBody 2s ease-in-out;
+    }
+    @keyframes fadeInBody {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .container {
+      padding: 3rem 1.5rem;
+      max-width: 800px;
+      margin: auto;
+      text-align: center;
+    }
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 3rem;
+      color: #e63946;
+    }
+    .emoji-cloud {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+    .section {
+      background: #ffffffcc;
+      padding: 2rem;
+      border-radius: 1.5rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      display: none;
+      margin-bottom: 2rem;
+    }
+    .button-box button,
+    #textbox .button-box button,
+    #finalMessage .button-box button,
+    #finalOption .button-box button {
+      background: linear-gradient(to right, #ff4d4d, #ff6666);
+      color: white;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: transform 0.2s;
+      margin-top: 1rem;
+    }
+    .button-box button:hover,
+    #textbox .button-box button:hover,
+    #finalMessage .button-box button:hover,
+    #finalOption .button-box button:hover {
+      transform: scale(1.05);
+    }
+    .contact-info, .final-message, .love-message {
+      display: none;
+      background: #ffe6f0;
+      padding: 1.5rem;
+      border-radius: 10px;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+    .textbox {
+      display: none;
+      margin-top: 1rem;
+    }
+    textarea {
+      width: 100%;
+      height: 100px;
+      padding: 1rem;
+      font-size: 1rem;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      resize: none;
+    }
+    .submit-message {
+      margin-top: 1rem;
+      font-weight: bold;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="emoji-cloud">💖✨🌸💌🌻🌸💖💌🌈✨🎀💙</div>
+    <h1>To Someone Who Holds a Special Place 💝</h1>
+
+    <div class="button-box">
+      <button onclick="showSection(1)">🎁 Tap Here — A Surprise Awaits</button>
+    </div>
+
+    <div id="section1" class="section">
+      🌟 This page is for you — someone who will always have a special place in my heart. 💫
+      <div class="button-box">
+        <button onclick="showSection(2)">💐 Want to Know More?</button>
+      </div>
+    </div>
+
+    <div id="section2" class="section">
+      💌 You mean a lot to someone. Even after all these years, your name brings a smile, a pause, and a rush of memories 🌸.💌 I still think about you often, and my heart smiles when your name comes to mind. You have left an unforgettable mark. 🌸
+      <div class="button-box">
+        <button onclick="showSection(3)">📚 School Days Flashback</button>
+      </div>
+    </div>
+
+    <div id="section3" class="section">
+      I still remember the first time I saw you. It was in 5th standard, and I couldn’t stop looking at you. There was something in the way you smiled, in the way you carried yourself, that just caught my heart — and from that moment, I knew I had feelings for you. But back then, it was just a silent love, something unspoken, something that lived inside me.
+      <br>
+      <br>
+      ❤️By the time we reached 8th standard, maybe you didn’t even know I existed beyond the brief glances we exchanged. But I still cared, in silence, thinking about you constantly. Then, in 9th standard, our paths crossed for the first time at a friend's house. I remember how we started talking — and it felt like the start of something amazing. every little thing about you fascinated me. We became close, and for the first time, I thought I had a real chance at connecting with you.<br> <br> 
+      <br>
+      We became friends. Not just friends — best friends. And that was the most beautiful phase of my life. 💫Those were the days when we became best friends, and every moment spent with you felt like a dream come true.💭 I used to take detours just to pass by your house — hoping to catch a glimpse of you. Sometimes I saw you. Sometimes I didn’t. And every time I did, I couldn’t even hold your gaze. My eyes would drop, my heart would race, and later, I’d regret not truly looking. <br><br>
+      🫣 I’d wait by the road near my house… not because I had to be there, but because I hoped you’d walk by.During Navratri, I’d go to the temple and just wait — not for the prayers, but for you. I’d wake up early just to stand a chance of seeing you, even for a moment. Your presence, even from afar, gave my heart a strange kind of peace. 🙏💕 <br> <br>
+
+      Our bond was hidden from the world, but it was everything to me. I still remember those silly school escapes, you waving at me secretly, and us pretending like nothing happened the next day. I miss that innocence. I miss those stolen glances. I miss us. 🥺<br><br>
+      I’ve spent 17 years loving you, and in the last 9 years, we haven’t spoken — except that one time when we finally connected again… and the call dropped. I still hear that silence. And worse than silence is the ache that came after it. 😔
+      <div class="button-box">
+        <button onclick="showSection(4)">🙏 A Heartfelt Apology🥺</button>
+      </div>
+    </div>
+
+    <div id="section4" class="section">
+      🥺 It’s been so long… I truly hope you're well.
+
+      You probably carry hurt from what happened, and I understand. I’ve tried so many times to reach out — not to revive anything, but to make peace. 💔
+
+      I’ve loved you since we were kids. Losing you without closure has broken me in ways words can’t explain.
+
+      I don’t seek forgiveness. I just want you to remember the love, the friendship, and the good moments we had. 🌹
+
+      <div class="button-box">
+        <button onclick="showSection(5)">💭 Your Thoughts?</button>
+      </div>
+    </div>
+
+    <div id="section5" class="section">
+      🤔 I’ve laid it all out, but now I wonder — how do you feel about everything that happened?
+      <div class="button-box">
+        <button onclick="chooseOption('dontHate')">😊 I Don’t Hate You</button>
+        <button onclick="chooseOption('hate')">😔 I Still Feel Hurt</button>
+      </div>
+    </div>
+
+    <div id="contactInfo" class="contact-info">
+      💙 Thank you for not holding onto anger. That means the world to me. 🙏
+      <!-- You can reach me at: <strong>your.email@example.com</strong> or on WhatsApp: <strong>+91-XXXXXXXXXX</strong>-->
+    </div>
+
+    <div id="textbox" class="textbox">
+      <p>If you have anything to say, now is the time...</p>
+      <textarea id="feedbackBox" placeholder="Write your message here... (It will be sent anonymously to me)"></textarea>
+      <div class="button-box">
+        <button onclick="submitMessage()">❤️ Submit</button>
+        <button onclick="showFinalMessage()">📨 Skip and Move On</button>
+      </div>
+      <div id="submitNote" class="submit-message"></div>
+    </div>
+
+    <div id="finalMessage" class="love-message">
+      💖 I understand, and I respect your feelings — even if they include pain or anger. My love for you is not based on expectations — it’s based on memory, moments, and meaning. 🌹 Thank you for being such a beautiful part of my life, even if just in my memories. 🌈 I’ll always honour what we had, and I’ll always wish for your happiness — from the deepest place in my heart.<br><br>
+      💖 No matter the past, I cherish what we shared, and I hope life has been kind to you. I carry only love and gratitude for you, no matter the space or silence between us. 🌈 If you ever want to reconnect and heal any past wounds, let me know — I’m always here with open arms. ❤️
+
+      <div class="button-box">
+        <button onclick="showFinalOption()">💬 Let’s Start Fresh?</button>
+        <button onclick="showFinalMessage()">🚶‍♂️ I Want to Move On</button>
+      </div>
+    </div>
+
+    <div id="finalOption" class="love-message">
+      It's difficult to hold grudges and negativity in our hearts. We should let them go. If we get a second chance, let’s make it better than before — you know me, and I know you. You still have that kindness and positivity, and I’m sure you remember our good memories. 💞 <br> <br> ✨ Let’s leave behind all the negativity and start anew — together, as friends. We’ve learned from our past, and now we can build something beautiful from it. 💞
+
+      <div class="button-box">
+        <button onclick="submitForm('Yes, Let’s Be Friends')">Yes, Let’s Be Friends</button>
+        <button onclick="submitForm('No, I Want to Move On')">No, I Want to Move On</button>
+      </div>
+    </div>
+
+    <!-- Form for submitting response -->
+    <form id="messageForm" action="https://formspree.io/f/myzwejnk" method="POST">
+      <input type="hidden" name="message" id="finalMessageInput" />
+      <input type="hidden" name="name" value="Anonymous" />
+    </form>
+
+  </div>
+
+  <script>
+    let sectionsVisited = 0;
+    let userChoice = '';
+    let userMessage = '';
+
+    function showSection(n) {
+      document.getElementById('section' + n).style.display = 'block';
+      sectionsVisited++;
+    }
+
+    function chooseOption(choice) {
+      userChoice = choice;
+      if (userChoice === 'dontHate') {
+        showContact();
+      } else if (userChoice === 'hate') {
+        showTextbox();
+      }
+    }
+
+    function showContact() {
+      document.getElementById('contactInfo').style.display = 'block';
+    }
+
+    function showTextbox() {
+      document.getElementById('textbox').style.display = 'block';
+    }
+
+    function showFinalMessage() {
+      document.getElementById('finalMessage').style.display = 'block';
+    }
+
+    function showFinalOption() {
+      document.getElementById('finalOption').style.display = 'block';
+    }
+
+    function submitForm(finalResponse) {
+      userMessage = document.getElementById('feedbackBox').value;
+      if (!userMessage.trim() && !finalResponse) {
+        alert("Please provide both a message and a final response.");
+        return;
+      }
+
+      if (userMessage.trim() === '') {
+        alert("Please write a message before submitting.");
+        return;
+      }
+
+      if (!finalResponse) {
+        alert("Please choose your final response.");
+        return;
+      }
+
+      document.getElementById('submitNote').innerText = "💌 Your message has been sent successfully!";
+      document.getElementById('finalMessageInput').value = userMessage + "\n\nUser's response: " + finalResponse;
+      document.getElementById('messageForm').submit();
+    }
+  </script>
+</body>
+</html>
