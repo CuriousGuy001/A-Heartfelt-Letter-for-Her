@@ -106,7 +106,7 @@
     </div>
 
     <div id="section2" class="section">
-      💌 You mean a lot to someone. Even after all these years, your name brings a smile, a pause, and a rush of memories 🌸.💌 I still think about you often, and my heart smiles when your name comes to mind. You have left an unforgettable mark. 🌸
+        💌 You mean a lot to someone. Even after all these years, your name brings a smile, a pause, and a rush of memories. 🌸💌 I still think about you often, and my heart smiles when your name comes to mind. You have left an unforgettable mark. 🌸
       <div class="button-box">
         <button onclick="showSection(3)">📚 School Days Flashback</button>
       </div>
@@ -140,6 +140,10 @@
          Maybe things can’t go back. Maybe they shouldn’t. But if there’s even a small way to bring back a sense of peace between us — I want to try. 
          Even if you never reply, I hope you’ll read this someday and know:
          You’ve always been special to me. You still are. 💞
+      <div class="button-box">
+        <button onclick="showSection(5)">💭 What Do You Feel?</button>
+      </div>
+    </div>
 
     <div id="section5" class="section">
       🤔 I’ve laid it all out, but now I wonder — how do you feel about everything that happened?
@@ -151,6 +155,7 @@
 
     <div id="contactInfo" class="contact-info">
       💙 Thank you for not holding onto anger. That means the world to me. 🙏
+      <!-- You can reach me at: <strong>your.email@example.com</strong> or on WhatsApp: <strong>+91-XXXXXXXXXX</strong>-->
     </div>
 
     <div id="textbox" class="textbox">
@@ -164,21 +169,31 @@
     </div>
 
     <div id="finalMessage" class="love-message">
-       💖 I understand, and I respect your feelings — even if they include pain or anger. My love for you is not based on expectations — it’s based on memory, moments, and meaning. 🌹 Thank you for being such a beautiful part of my life, even if just in my memories. 🌈 I’ll always honour what we had, and I’ll always wish for your happiness — from the deepest place in my heart.<br><br>
-        💖 No matter the past, I cherish what we shared, and I hope life has been kind to you. I carry only love and gratitude fo
+        💖 I understand, and I respect your feelings — even if they include pain or anger. My love for you is not based on expectations — it’s based on memory, moments, and meaning. 🌹 Thank you for being such a beautiful part of my life, even if just in my memories. 🌈 I’ll always honour what we had, and I’ll always wish for your happiness — from the deepest place in my heart.<br><br>
+        💖 No matter the past, I cherish what we shared, and I hope life has been kind to you. I carry only love and gratitude for you, no matter the space or silence between us. 🌈 If you ever want to reconnect and heal any past wounds, let me know — I’m always here with open arms. ❤️
+
       <div class="button-box">
         <button onclick="showFinalOption()">💬 Let’s Start Fresh?</button>
-        <button onclick="submitForm('No, I Want to Move On')">🚶‍♂️ I Want to Move On</button>
+        <button onclick="showFinalMessage()">🚶‍♂️ I Want to Move On</button>
       </div>
     </div>
 
     <div id="finalOption" class="love-message">
-      It's difficult to hold grudges and negativity in our hearts. We should let them go. If we get a second chance, let’s make it better than before — you know me, and I know you. You still have that kindness and positivity, and I’m sure you remember our good memories. 💞 <br> <br> ✨ Let’s leave behind all the negativity and start anew — together, as friends. We’ve learned from our past, and now we can build something beautiful from it. 💞
+        It's difficult to hold grudges and negativity in our hearts. We should let them go. If we get a second chance, let’s make it better than before — you know me, and I know you. You still have that kindness and positivity, and I’m sure you remember our good memories. 💞 <br> <br> ✨ Let’s leave behind all the negativity and start anew — together, as friends. We’ve learned from our past, and now we can build something beautiful from it. 💞
+
       <div class="button-box">
         <button onclick="submitForm('Yes, Let’s Be Friends')">Yes, Let’s Be Friends</button>
         <button onclick="submitForm('No, I Want to Move On')">No, I Want to Move On</button>
       </div>
     </div>
+
+    <!-- Form for submitting response -->
+    <form id="messageForm" action="https://formspree.io/f/myzwejnk" method="POST">
+      <input type="hidden" name="message" id="finalMessageInput" />
+      <input type="hidden" name="name" value="Anonymous" />
+    </form>
+
+  </div>
 
     <!-- Audio Element -->
     <audio id="farewellAudio" preload="auto">
