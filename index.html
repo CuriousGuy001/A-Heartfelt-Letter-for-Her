@@ -227,12 +227,7 @@
   // Play the song
   audio.play();
 
-  // After song ends, submit form automatically with default message
-  audio.onended = () => {
-    const message = "User chose to move on without leaving a message.";
-    document.getElementById('finalMessageInput').value = message;
-    document.getElementById('messageForm').submit();
-  };
+ 
 }
 
 
