@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -87,18 +87,18 @@
       font-weight: bold;
       color: green;
     }
+    .song-note {
+      display: none;
+      margin-top: 1rem;
+      font-style: italic;
+      color: #a63c71;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <div class="emoji-cloud">💖✨🌸💌🌻🌸💖💌🌈✨🎀💙</div>
     <h1>To Someone Who Holds a Special Place 💝</h1>
-
-    <!-- Audio player -->
-    <audio controls autoplay>
-      <source src="song.mp3" type="audio/mp3">
-      Your browser does not support the audio element.
-    </audio>
 
     <div class="button-box">
       <button onclick="showSection(1)">🎁 Tap Here — A Surprise Awaits</button>
@@ -119,7 +119,7 @@
     </div>
 
     <div id="section3" class="section">
-      I still remember the first time I saw you. It was in 5th standard, and I couldn’t stop looking at you. There was something in the way you smiled, in the way you carried yourself, that just caught my heart — and from that moment, I knew I had feelings for you. But back then, it was just a silent love, something unspoken, something that lived inside me.
+     I still remember the first time I saw you. It was in 5th standard, and I couldn’t stop looking at you. There was something in the way you smiled, in the way you carried yourself, that just caught my heart — and from that moment, I knew I had feelings for you. But back then, it was just a silent love, something unspoken, something that lived inside me.
       <br>
       <br>
       ❤️By the time we reached 8th standard, maybe you didn’t even know I existed beyond the brief glances we exchanged. But I still cared, in silence, thinking about you constantly. Then, in 9th standard, our paths crossed for the first time at a friend's house. I remember how we started talking — and it felt like the start of something amazing. every little thing about you fascinated me. We became close, and for the first time, I thought I had a real chance at connecting with you.<br> <br> 
@@ -134,15 +134,16 @@
       </div>
     </div>
 
-    <div id="section4" class="section">
-      🥺 It’s been so long… I truly hope you're well.
+    <di 🥺 It’s been so long… I’ve spent years asking myself what went wrong. How did something so beautiful turn into such a painful memory? I still carry those memories — our school days, the laughter, your smile — with a quiet kind of warmth. ☀️<br><br>
+        Maybe I never expressed it properly, but I’ve loved you since childhood. Maybe that's why it was so hard for me to understand what happened when our paths suddenly drifted apart. The truth is, I was broken, I was hurt, and you left — without any closure, without a single word. 💔
+       <br><br>I know I made mistakes — I regret them with all my heart. But I’m not asking for forgiveness, and I’m certainly not seeking a second chance. I’m not asking for anything in return, not even friendship, not even love. I don’t expect you to remember the good, especially now that time has created so much distance. 🌈
+       <br> <br> 
+       But if there's one thing I wish — it’s that you remember the good moments we shared. I just want peace. I want to know that, at least in some small way, we can let go of the pain and the silence that’s lasted so long. And it hurts to see you talk to everyone… but never me. 😢
 
-      You probably carry hurt from what happened, and I understand. I’ve tried so many times to reach out — not to revive anything, but to make peace. 💔
-
-      I’ve loved you since we were kids. Losing you without closure has broken me in ways words can’t explain.
-
-      I don’t seek forgiveness. I just want you to remember the love, the friendship, and the good moments we had. 🌹
-
+       <br> <br> 
+         Maybe things can’t go back. Maybe they shouldn’t. But if there’s even a small way to bring back a sense of peace between us — I want to try. 
+         Even if you never reply, I hope you’ll read this someday and know:
+         You’ve always been special to me. You still are. 💞
       <div class="button-box">
         <button onclick="showSection(5)">💭 Your Thoughts?</button>
       </div>
@@ -158,7 +159,6 @@
 
     <div id="contactInfo" class="contact-info">
       💙 Thank you for not holding onto anger. That means the world to me. 🙏
-      <!-- You can reach me at: <strong>your.email@example.com</strong> or on WhatsApp: <strong>+91-XXXXXXXXXX</strong>-->
     </div>
 
     <div id="textbox" class="textbox">
@@ -172,57 +172,44 @@
     </div>
 
     <div id="finalMessage" class="love-message">
-      💖 I understand, and I respect your feelings — even if they include pain or anger. My love for you is not based on expectations — it’s based on memory, moments, and meaning. 🌹 Thank you for being such a beautiful part of my life, even if just in my memories. 🌈 I’ll always honour what we had, and I’ll always wish for your happiness — from the deepest place in my heart.<br><br>
+     💖 I understand, and I respect your feelings — even if they include pain or anger. My love for you is not based on expectations — it’s based on memory, moments, and meaning. 🌹 Thank you for being such a beautiful part of my life, even if just in my memories. 🌈 I’ll always honour what we had, and I’ll always wish for your happiness — from the deepest place in my heart.<br><br>
       💖 No matter the past, I cherish what we shared, and I hope life has been kind to you. I carry only love and gratitude for you, no matter the space or silence between us. 🌈 If you ever want to reconnect and heal any past wounds, let me know — I’m always here with open arms. ❤️
-
       <div class="button-box">
         <button onclick="showFinalOption()">💬 Let’s Start Fresh?</button>
-        <button onclick="showFinalMessage()">🚶‍♂️ I Want to Move On</button>
+        <button onclick="submitForm('No, I Want to Move On')">🚶‍♂️ I Want to Move On</button>
       </div>
+      <div id="songNote" class="song-note">🎵 A final song is playing...</div>
     </div>
 
     <div id="finalOption" class="love-message">
-      It's difficult to hold grudges and negativity in our hearts. We should let them go. If we get a second chance, let’s make it better than before — you know me, and I know you. You still have that kindness and positivity, and I’m sure you remember our good memories. 💞 <br> <br> ✨ Let’s leave behind all the negativity and start anew — together, as friends. We’ve learned from our past, and now we can build something beautiful from it. 💞
-
+     It's difficult to hold grudges and negativity in our hearts. We should let them go. If we get a second chance, let’s make it better than before — you know me, and I know you. You still have that kindness and positivity, and I’m sure you remember our good memories. 💞 <br> <br> ✨ Let’s leave behind all the negativity and start anew — together, as friends. We’ve learned from our past, and now we can build something beautiful from it. 💞
       <div class="button-box">
         <button onclick="submitForm('Yes, Let’s Be Friends')">Yes, Let’s Be Friends</button>
         <button onclick="submitForm('No, I Want to Move On')">No, I Want to Move On</button>
       </div>
     </div>
 
-    <!-- Form for submitting response -->
     <form id="messageForm" action="https://formspree.io/f/myzwejnk" method="POST">
       <input type="hidden" name="message" id="finalMessageInput" />
       <input type="hidden" name="name" value="Anonymous" />
     </form>
-
   </div>
 
   <script>
-    let sectionsVisited = 0;
     let userChoice = '';
     let userMessage = '';
 
     function showSection(n) {
       document.getElementById('section' + n).style.display = 'block';
-      sectionsVisited++;
     }
 
     function chooseOption(choice) {
       userChoice = choice;
       if (userChoice === 'dontHate') {
-        showContact();
-      } else if (userChoice === 'hate') {
-        showTextbox();
+        document.getElementById('contactInfo').style.display = 'block';
+      } else {
+        document.getElementById('textbox').style.display = 'block';
       }
-    }
-
-    function showContact() {
-      document.getElementById('contactInfo').style.display = 'block';
-    }
-
-    function showTextbox() {
-      document.getElementById('textbox').style.display = 'block';
     }
 
     function showFinalMessage() {
@@ -233,26 +220,41 @@
       document.getElementById('finalOption').style.display = 'block';
     }
 
-    function submitForm(finalResponse) {
-      userMessage = document.getElementById('feedbackBox').value;
-      if (!userMessage.trim() && !finalResponse) {
-        alert("Please provide both a message and a final response.");
-        return;
-      }
-
-      if (userMessage.trim() === '') {
+    function submitMessage() {
+      userMessage = document.getElementById('feedbackBox').value.trim();
+      if (!userMessage) {
         alert("Please write a message before submitting.");
         return;
       }
+      document.getElementById('submitNote').innerText = "💌 Your message has been sent successfully!";
+      document.getElementById('finalMessageInput').value = userMessage + "\n\nUser's response: Skipped";
+      document.getElementById('messageForm').submit();
+    }
+
+    function submitForm(finalResponse) {
+      userMessage = document.getElementById('feedbackBox').value.trim();
 
       if (!finalResponse) {
         alert("Please choose your final response.");
         return;
       }
 
-      document.getElementById('submitNote').innerText = "💌 Your message has been sent successfully!";
-      document.getElementById('finalMessageInput').value = userMessage + "\n\nUser's response: " + finalResponse;
-      document.getElementById('messageForm').submit();
+      if (finalResponse === 'No, I Want to Move On') {
+        document.getElementById('songNote').style.display = 'block';
+        const audio = new Audio('song.mp3');
+        audio.play();
+
+        audio.addEventListener('ended', function () {
+          document.getElementById('submitNote').innerText = "💌 Your message has been sent successfully!";
+          document.getElementById('finalMessageInput').value = userMessage + "\n\nUser's response: " + finalResponse;
+          document.getElementById('messageForm').submit();
+        });
+
+      } else {
+        document.getElementById('submitNote').innerText = "💌 Your message has been sent successfully!";
+        document.getElementById('finalMessageInput').value = userMessage + "\n\nUser's response: " + finalResponse;
+        document.getElementById('messageForm').submit();
+      }
     }
   </script>
 </body>
