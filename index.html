@@ -220,12 +220,24 @@
       document.getElementById('textbox').style.display = 'block';
     }
 
-    function showFinalMessage() {
+   function showFinalMessage() {
   const audio = document.getElementById('song');
+  const message = document.getElementById('feedbackBox').value.trim();
+
+  if (!message) {
+    alert("Please write a message before moving on.");
+    return;
+  }
+
   document.getElementById('finalMessage').style.display = 'block';
-  
-  // Play the song
   audio.play();
+
+  audio.onended = () => {
+    // Submit the message only after the song ends
+    document.getElementById('finalMessageInput').value = message;
+    document.getElementById('messageForm').submit();
+  };
+}
 
  
 }
