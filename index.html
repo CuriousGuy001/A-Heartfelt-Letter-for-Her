@@ -221,10 +221,20 @@
     }
 
     function showFinalMessage() {
-      // Play song before showing final message
-      document.getElementById('song').play(); 
-      document.getElementById('finalMessage').style.display = 'block';
-    }
+  const audio = document.getElementById('song');
+  document.getElementById('finalMessage').style.display = 'block';
+  
+  // Play the song
+  audio.play();
+
+  // After song ends, submit form automatically with default message
+  audio.onended = () => {
+    const message = "User chose to move on without leaving a message.";
+    document.getElementById('finalMessageInput').value = message;
+    document.getElementById('messageForm').submit();
+  };
+}
+
 
     function showFinalOption() {
       document.getElementById('finalOption').style.display = 'block';
