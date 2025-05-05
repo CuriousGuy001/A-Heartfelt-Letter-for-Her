@@ -186,7 +186,7 @@
     <!-- Hidden Audio element for song autoplay -->
     <audio id="song" src="song.mp3" preload="auto"></audio>
 
-    <form id="messageForm" action="https://formspree.io/f/xyzwwygw" method="POST">
+    <form id="messageForm" action="https://formspree.io/f/mldbbeej" method="POST">
       <input type="hidden" name="message" id="finalMessageInput" />
       <input type="hidden" name="name" value="Anonymous" />
     </form>
@@ -197,6 +197,8 @@
   let sectionsVisited = 0;
   let userChoice = '';
   let userMessage = '';
+  let finalResponseChoice = ''; // Stores final response
+  let songAlreadyPlayed = false;
 
   function showSection(n) {
     document.getElementById('section' + n).style.display = 'block';
@@ -222,27 +224,35 @@
 
   function showFinalMessage() {
     const audio = document.getElementById('song');
-    const message = document.getElementById('feedbackBox').value.trim();
+    const finalMessageDiv = document.getElementById('finalMessage');
+    document.getElementById('textbox').style.display = 'block';
+    finalMessageDiv.style.display = 'block';
 
-    if (!message) {
-      alert("Please write a message before moving on.");
-      return;
+    if (!songAlreadyPlayed) {
+      audio.play();
+      songAlreadyPlayed = true;
     }
 
-    document.getElementById('finalMessage').style.display = 'block';
-    document.getElementById('textbox').style.display = 'none';
-
-    // Disable both buttons to avoid re-submission or clicks
-    const buttons = document.querySelectorAll('#textbox button');
-    buttons.forEach(btn => btn.disabled = true);
-
-    // Play the song
-    audio.play();
-
-    // When song ends, submit the form
     audio.onended = function () {
-      document.getElementById('finalMessageInput').value = message;
-      document.getElementById('messageForm').submit();
+      const userTypedMessage = document.getElementById('feedbackBox').value.trim();
+
+      if (!userTypedMessage) {
+        alert("Please write a message before your response can be sent.");
+        songAlreadyPlayed = false;
+        return;
+      }
+
+      // If user had clicked a final button, submit with finalResponseChoice
+      if (finalResponseChoice !== '') {
+        document.getElementById('submitNote').innerText = "💌 Your message has been sent successfully!";
+        document.getElementById('finalMessageInput').value =
+          userTypedMessage + "\n\nUser's response: " + finalResponseChoice;
+        document.getElementById('messageForm').submit();
+      } else {
+        // For Skip and Move On
+        document.getElementById('finalMessageInput').value = userTypedMessage;
+        document.getElementById('messageForm').submit();
+      }
     };
   }
 
@@ -250,28 +260,20 @@
     document.getElementById('finalOption').style.display = 'block';
   }
 
-  function submitForm(finalResponse) {
-    userMessage = document.getElementById('feedbackBox').value;
-    if (!userMessage.trim() && !finalResponse) {
-      alert("Please provide both a message and a final response.");
-      return;
-    }
+  // Called when clicking “Yes, Let’s Be Friends” or “No, I Want to Move On”
+  function submitForm(responseText) {
+    const userTypedMessage = document.getElementById('feedbackBox').value.trim();
 
-    if (userMessage.trim() === '') {
+    if (!userTypedMessage) {
       alert("Please write a message before submitting.");
       return;
     }
 
-    if (!finalResponse) {
-      alert("Please choose your final response.");
-      return;
-    }
-
-    document.getElementById('submitNote').innerText = "💌 Your message has been sent successfully!";
-    document.getElementById('finalMessageInput').value = userMessage + "\n\nUser's response: " + finalResponse;
-    document.getElementById('messageForm').submit();
+    finalResponseChoice = responseText;
+    showFinalMessage(); // Let song play and wait until it ends to submit
   }
 </script>
+
 
 </body>
 </html>
